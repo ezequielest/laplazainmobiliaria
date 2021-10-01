@@ -1,5 +1,18 @@
 body {
     background-color: $bg-primary;
+    color: $text-primary;
+}
+
+form {
+    max-width: 400px;
+
+    label {
+        color: $text-primary;
+    }
+
+    .form-control {
+        margin-bottom: 8px;
+    }
 }
 
 footer {

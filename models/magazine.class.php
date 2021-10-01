@@ -2,9 +2,10 @@
 class Magazine {
     private $name;
     private $description;
-    private $category_id;
-    private $creation_date;
-    private $relevant_month;
+    private $link;
+    private $categoryId;
+    private $creationDate;
+    private $relevantMonth;
     private $enabled;
 
     function __construct() {}
@@ -14,7 +15,7 @@ class Magazine {
     }
 
     public function getName() {
-        return $this->name();
+        return $this->name;
     }
 
     public function setDescription($description) {
@@ -25,16 +26,32 @@ class Magazine {
         return $this->description;
     }
 
-    public function setCategoryId($category_id) {
-        $this->category_id = $category_id;
+    public function setLink($link) {
+        $this->link = intval($link);
+    }
+
+    public function getLink() {
+        return $this->link;
+    }
+
+    public function setCategoryId($categoryId) {
+        $this->categoryId = $categoryId;
     }
 
     public function getCategoryId() {
-        return $this->category_id;
+        return $this->categoryId;
     }
 
-    public function setRelevantMonth($relevant_month) {
-        $this->relevant_month = $relevant_month;
+    public function setRelevantMonth($relevantMonth) {
+        $this->relevantMonth = $relevantMonth;
+    }
+
+    public function setCreationDate($creationDate) {
+        $this->creationDate = $creationDate;
+    }
+
+    public function getCreationDate() {
+        return $this->creationDate;
     }
 
     public function getRelevantMonth() {

@@ -1,10 +1,13 @@
-
 <?php 
-    include_once('./class/db.class.php');
-    include_once('./class/magazines.class.php');
-    
-    $magazine = new Magazine();
-    $magazines = $magazine->getById(1);
+    include_once('../class/magazines-crud.class.php');
+
+    session_start();
+    if (!isset($_SESSION['user_name'])) {
+        header('location: /laplazainmobiliaria');
+    }
+
+    $magazineCrud = new MagazineCrud();
+    $magazineList = $magazineCrud->getAll();
 ?>
 
 
@@ -26,17 +29,27 @@
         <div class="row">
             <div class="col-12">
             <h2>Lista de revistas</h2>
-            <table>
+            <div>
+                <a href="magazine-form.php?action=create">Nueva revista</a>
+            </div>
+            <table class="table">
             <tr>
                 <th>Nombre</th>
                 <th>description</th>
                 <th>category_id</th>
+                <th>Acciones</th>
             </tr>
-            <?php foreach ($magazines as $magazine) { ?>
+            <?php foreach ($magazineList as $magazine) { ?>
             <tr>
-                <td> <?php echo $magazine['name']; ?> </td>
-                <td> <?php echo $magazine['description']; ?> </td>
-                <td> <?php echo $magazine['category_id']; ?> </td>
+                <td> <?php echo $magazine['name'] ?> </td>
+                <td> <?php echo $magazine['description'] ?> </td>
+                <td> <?php echo $magazine['category_id'] ?> </td>
+                <td> 
+                    <ul>
+                        <li>Editar</li>
+                        <li>Eliminar</li>
+                    </ul>    
+                </td>
             </tr>
             <?php } ?>
 
@@ -45,11 +58,5 @@
         </div>
     </section>
     <footer>La plaza inmobiliaria | Construya hoy | Todos los derechos resevados ©</footer>
-
-
-    
-
-
-
 </body>
 </html>

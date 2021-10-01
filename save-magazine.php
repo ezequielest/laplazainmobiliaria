@@ -23,11 +23,8 @@ if ($_POST['name'] && $_POST['description']) {
     $magazine->setCategoryId($_POST['category_id']);
     $magazine->setRelevantMonth($_POST['relevant_month']);
     $magazine->setEnabled($_POST['enabled']);
-    $magazine->save();
 
     header('Location: /laplazainmobiliaria');
-
-
 }
 
 ?>
