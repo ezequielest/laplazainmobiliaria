@@ -17,10 +17,12 @@
     <title>Document</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="./css/index.css" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
+    <section class="container-fluid">
         <div class="row">
             <div class="col-12">
             <h2>Lista de revistas</h2>
@@ -35,14 +37,14 @@
                 <td> <?php echo $magazine['name']; ?> </td>
                 <td> <?php echo $magazine['description']; ?> </td>
                 <td> <?php echo $magazine['category_id']; ?> </td>
-
             </tr>
             <?php } ?>
 
             </table>
             </div>
         </div>
-    </div>
+    </section>
+    <footer>La plaza inmobiliaria | Construya hoy | Todos los derechos resevados ©</footer>
 
 
     
