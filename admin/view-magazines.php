@@ -46,8 +46,8 @@
                 <td> <?php echo $magazine['category_id'] ?> </td>
                 <td> 
                     <ul>
-                        <li>Editar</li>
-                        <li>Eliminar</li>
+                        <li><a href="./magazine-form.php?action=edit&id=<?php echo $magazine['id'] ?>">Editar</a></li>
+                        <li><a href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>">Eliminar</li>
                     </ul>    
                 </td>
             </tr>

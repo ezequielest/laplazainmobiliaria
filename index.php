@@ -1,5 +1,7 @@
 
 <?php 
+
+define('ROOTPATH', dirname(__FILE__));
     //include_once('./class/db.class.php');
     
     //include_once('./class/magazines.class.php');

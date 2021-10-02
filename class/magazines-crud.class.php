@@ -1,9 +1,11 @@
 <?php
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
 
-include_once('db.class.php');
-include_once('../models/magazine.class.php');
+require_once 'db.class.php';
+//require '../../models/magazine.class.php';
+require_once $root . '\laplazainmobiliaria\models\magazine.class.php';
 class MagazineCrud {
-
+    
     private $conn; 
 
     function __construct() {
@@ -22,6 +24,7 @@ class MagazineCrud {
 
         $magazineObj = new Magazine();
 
+        $magazineObj->setId($row['id']);
         $magazineObj->setName($row['name']);
         $magazineObj->setDescription($row['description']);
         $magazineObj->setLink($row['link']);
@@ -39,21 +42,53 @@ class MagazineCrud {
         return $this->fillMagazine($rows);
     }
 
-    public function save() {
+    public function save($magazine) {
         $this->creation_date = date('Y-m-d');
-        $query = $this->conn->connection->query(
-            "INSERT INTO magazines (name, description, category_id, creation_date, relevant_month, enabled) 
-            values ('$this->name','$this->description', '$this->category_id', '$this->creation_date', '$this->relevant_month','$this->enabled')"
+        $query = $this->conn->connection->prepare(
+            'INSERT INTO magazines (name, description, category_id, creation_date, relevant_month, enabled) 
+            values (:name,:description,:categoryId,:creationDate,:relevantMonth,:enabled)'
         );
-        $rows = $query->fetchAll();
 
-        return $rows;
+        $query->bindValue('name', $magazine->getName());
+        $query->bindValue('description', $magazine->getDescription());
+        $query->bindValue('categoryId', $magazine->getCategoryId());
+        $query->bindValue('creationDate', $magazine->getCreationDate());
+        $query->bindValue('relevantMonth', $magazine->getRelevantMonth());
+        $query->bindValue('enabled', $magazine->getEnabled());
+
+
+        $query->execute();
+
+
+    }
+
+    public function update($magazine) {
+        $query = $this->conn->connection->prepare(
+            'UPDATE magazines 
+            SET 
+                name = :name, 
+                description        = :description, 
+                category_id        = :categoryId,
+                relevant_month     = :relevantMonth,
+                enabled            = :enabled
+            WHERE id = :id'
+        );
+
+        $query->bindValue('name', $magazine->getName());
+        $query->bindValue('description', $magazine->getDescription());
+        $query->bindValue('categoryId', $magazine->getCategoryId());
+        $query->bindValue('relevantMonth', $magazine->getRelevantMonth());
+        $query->bindValue('enabled', $magazine->getEnabled());
+        $query->bindValue('id', $magazine->getId());
+
+        $query->execute();
     }
 
     private function fillMagazine($rows) {
         $magazineList = [];
         $magazineObj = new Magazine();
         foreach($rows as $magazine) {
+            $magazineObj->setId($magazine['id']);
             $magazineObj->setName($magazine['name']);
             $magazineObj->setDescription($magazine['description']);
             $magazineObj->setLink($magazine['link']);
