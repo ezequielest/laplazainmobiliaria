@@ -46,16 +46,16 @@ class Magazine {
         $this->relevantMonth = $relevantMonth;
     }
 
+    public function getRelevantMonth() {
+        return $this->relevantMonth;
+    }
+
     public function setCreationDate($creationDate) {
         $this->creationDate = $creationDate;
     }
 
     public function getCreationDate() {
         return $this->creationDate;
-    }
-
-    public function getRelevantMonth() {
-        $this->getRelevantMonth;
     }
 
     public function setEnabled($enabled) {

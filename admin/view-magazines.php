@@ -30,7 +30,7 @@
             <div class="col-12">
             <h2>Lista de revistas</h2>
             <div>
-                <a href="magazine-form.php?action=create">Nueva revista</a>
+                <a href="magazine-form.php?action=new">Nueva revista</a>
             </div>
             <table class="table">
             <tr>

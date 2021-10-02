@@ -17,6 +17,23 @@ class MagazineCrud {
     }
 
     public function getById($id) {
+        $query = $this->conn->connection->query('SELECT * FROM magazines WHERE id = ' . $id);
+        $row = $query->fetch();
+
+        $magazineObj = new Magazine();
+
+        $magazineObj->setName($row['name']);
+        $magazineObj->setDescription($row['description']);
+        $magazineObj->setLink($row['link']);
+        $magazineObj->setCategoryId($row['category_id']);
+        $magazineObj->setEnabled($row['enabled']);
+        $magazineObj->setRelevantMonth($row['relevant_month']);
+        $magazineObj->setCreationDate(date('Y-m-d'));
+  
+        return $magazineObj;
+    }
+
+    public function getByCategoryId($id) {
         $query = $this->conn->connection->query('SELECT * FROM magazines WHERE category_id = ' . $id);
         $rows = $query->fetchAll();
         return $this->fillMagazine($rows);

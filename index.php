@@ -30,6 +30,9 @@
                 <a href="https://www.facebook.com/laplaza.inmobiliaria" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/laplazainmobiliaria/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
+            <div class="favourite-magazine">
+                <i class="fas fa-arrow-left"></i> Seleccione su revista favorita
+            </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">CONSTRUYA HOY</button>
@@ -40,10 +43,10 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <iframe width="100%" height="507px" src="https://www.yumpu.com/es/embed/view/9B0ksp76l5ErG8o4" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                <iframe id="yumpuLaPlaza" class="yumpu-container" src="https://www.yumpu.com/es/embed/view/9B0ksp76l5ErG8o4" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">      
-                    <iframe width="100%" height="507px" src="https://www.yumpu.com/es/embed/view/bpNP71Chu4e9wy0i" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                    <iframe id="yumpuConstruya" class="yumpu-container" src="https://www.yumpu.com/es/embed/view/bpNP71Chu4e9wy0i" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
                 </div>
             </div>
 

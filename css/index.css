@@ -29,20 +29,26 @@ section.admin-login {
 section {
   background-color: #161616;
 }
+section .favourite-magazine {
+  display: inline;
+  position: relative;
+  left: 350px;
+  top: 30px;
+}
 section .social-media {
   display: inline;
   position: relative;
   left: 94%;
-  top: 55px;
+  top: 30px;
 }
 section .social-media a {
   color: #ddd;
 }
 section .social-media a i {
   margin-left: 4px;
+  font-size: 24px;
 }
 section ul.nav {
-  margin-top: 20px;
   background-color: transparent;
   border-bottom: 1px solid #222;
 }
@@ -53,4 +59,8 @@ section ul.nav .nav-link {
 section ul.nav .nav-link.active {
   background-color: #e0e0e0;
   color: #4e4e4e;
+}
+section .yumpu-container {
+  width: 100%;
+  height: calc(100vh - 100px);
 }

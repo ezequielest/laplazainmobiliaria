@@ -1,15 +1,23 @@
 section {
     background-color: $bg-primary; 
 
+    .favourite-magazine {
+        display: inline;
+        position: relative;
+        left: 350px;
+        top: 30px;
+    }
+
     .social-media {
         display: inline;
         position: relative;
         left: 94%;
-        top: 55px;
+        top: 30px;
         a {
             color: #ddd;
             i {
                 margin-left: 4px;
+                font-size: 24px;
             }
         
         }
@@ -17,7 +25,6 @@ section {
     }
 
     ul.nav {
-        margin-top: 20px;
         background-color: transparent;
         border-bottom: 1px solid #222;
 
@@ -32,4 +39,10 @@ section {
         }
             
     }
+
+    .yumpu-container {
+        width: 100%;
+        height: calc(100vh - 100px);
+    }
+
 }
