@@ -24,6 +24,10 @@ section .header-container {
   justify-content: space-between;
 }
 
+.highlight {
+  color: yellow;
+}
+
 section.admin-login {
   display: flex;
   justify-content: center;

@@ -43,17 +43,21 @@ if (isset($_GET['action'])) {
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                <div class="header-container">
-                    <h2><?php echo $headerText ?> revista</h2>
-                    <a class="btn btn-primary" href="view-magazines.php">Lista de revistas</a>
+                    <div class="header-container">
+                        <h2><?php echo $headerText ?> revista</h2>
+                        <a class="btn btn-primary" href="view-magazines.php">Lista de revistas</a>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
                 <form action="controller/magazine.controller.php" method="POST">
                     <label for="name">Nombre</label>
                     <input type="text" class="form-control" name="name" value="<?php echo $formType == 'new' ? '' : $magazine->getName(); ?>">
 
                     <label for="description">Descripción</label>
                     <textarea type="text" class="form-control" name="description"><?php echo $formType == 'new' ? '' : $magazine->getDescription(); ?></textarea>
-
+                    
                     <label for="link">link de YUMPU</label>
                     <textarea type="text" class="form-control" name="link"><?php echo $formType == 'new' ? '' : $magazine->getLink(); ?></textarea>
 
@@ -66,16 +70,26 @@ if (isset($_GET['action'])) {
                     <label for="description">Mes de concurrencia</label>
                     <input type="date" name="relevant_month" class="form-control" value="<?php echo $formType == 'new' ? '' : $magazine->getRelevantMonth(); ?>"></input>
 
-                    <!--<div class="form-check">
+                    <div class="form-check">
                         <input name="enabled" class="form-check-input" type="checkbox" id="gridCheck1" value="1" <?php if ($formType == 'edit' && $magazine->getEnabled()) { echo 'checked'; } ?>>
                         <label class="form-check-label" for="gridCheck1">
                             Habilitar 
                         </label>
-                    </div>-->
+                    </div>
                     <input type="hidden" name="action" value="<?php echo ($formType == 'new') ? 'create' : 'edit';  ?>">
                     <input type="hidden" name="id" value="<?php echo ($formType == 'new') ? 'null' : $magazine->getId();  ?>">
                     <button type="submit" class="btn btn-primary send"><?php echo $formType == 'new' ? 'Crear' : 'Editar';?></button>
                 </form>
+                </div>
+                <div class="col-6">
+                    <h2>IMPORTANTE!!</h2>
+                    <p>Del <b>iframe</b> generado por yumpu, solo seleccionar el enlace <b>dentro del src</b></p>
+                    <h4>Ejemplo:</h4>
+                    <p>Del enlace</p>
+                    <p>< iframe width="620px" height="541px" src="<span class="highlight">https://www.yumpu.com/es/embed/view/SGX0yF6xYvmco3tP</span>" frameborder="0" allowfullscreen="true"  allowtransparency="true"></p>
+                    <p>Seleccionar</p>
+                    <p class="highlight">https://www.yumpu.com/es/embed/view/SGX0yF6xYvmco3tP</p>
+                    <p>Ese es el enlace que debes copiar dentro de <b>link de YUMPU</b></p>
                 </div>
             </div>
         </div>
