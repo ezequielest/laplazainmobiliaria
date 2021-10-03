@@ -13,13 +13,13 @@ class MagazineCrud {
     }
 
     public function getAll() {
-        $query = $this->conn->connection->query('SELECT * FROM magazines');
+        $query = $this->conn->connection->query('SELECT * FROM magazines ORDER BY id DESC LIMIT 10');
         $rows = $query->fetchAll();
         return $this->fillMagazine($rows);
     }
 
     public function getById($id) {
-        $query = $this->conn->connection->query('SELECT * FROM magazines WHERE id = ' . $id);
+        $query = $this->conn->connection->query('SELECT * FROM magazines WHERE id = ' . $id . ' ORDER BY id DESC LIMIT 10');
         $row = $query->fetch();
 
         $magazineObj = new Magazine();
@@ -37,7 +37,7 @@ class MagazineCrud {
     }
 
     public function getByCategoryId($id) {
-        $query = $this->conn->connection->query('SELECT * FROM magazines WHERE category_id = ' . $id);
+        $query = $this->conn->connection->query('SELECT * FROM magazines WHERE category_id = ' . $id . 'ORDER BY id DESC');
         $rows = $query->fetchAll();
         return $this->fillMagazine($rows);
     }
@@ -45,21 +45,19 @@ class MagazineCrud {
     public function save($magazine) {
         $this->creation_date = date('Y-m-d');
         $query = $this->conn->connection->prepare(
-            'INSERT INTO magazines (name, description, category_id, creation_date, relevant_month, enabled) 
-            values (:name,:description,:categoryId,:creationDate,:relevantMonth,:enabled)'
+            'INSERT INTO magazines (name, description, link, category_id, creation_date, relevant_month, enabled) 
+            values (:name,:description,:link,:categoryId,:creationDate,:relevantMonth,:enabled)'
         );
 
         $query->bindValue('name', $magazine->getName());
         $query->bindValue('description', $magazine->getDescription());
+        $query->bindValue('link', $magazine->getLink());
         $query->bindValue('categoryId', $magazine->getCategoryId());
-        $query->bindValue('creationDate', $magazine->getCreationDate());
+        $query->bindValue('creationDate',  $this->creation_date);
         $query->bindValue('relevantMonth', $magazine->getRelevantMonth());
         $query->bindValue('enabled', $magazine->getEnabled());
 
-
         $query->execute();
-
-
     }
 
     public function update($magazine) {
@@ -68,6 +66,7 @@ class MagazineCrud {
             SET 
                 name = :name, 
                 description        = :description, 
+                link               = :link, 
                 category_id        = :categoryId,
                 relevant_month     = :relevantMonth,
                 enabled            = :enabled
@@ -76,6 +75,7 @@ class MagazineCrud {
 
         $query->bindValue('name', $magazine->getName());
         $query->bindValue('description', $magazine->getDescription());
+        $query->bindValue('link', $magazine->getLink());
         $query->bindValue('categoryId', $magazine->getCategoryId());
         $query->bindValue('relevantMonth', $magazine->getRelevantMonth());
         $query->bindValue('enabled', $magazine->getEnabled());

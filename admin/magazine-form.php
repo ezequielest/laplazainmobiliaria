@@ -38,38 +38,47 @@ if (isset($_GET['action'])) {
     <link href="../css/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-        <div class="row">
-            <div class="col-12">
-            <h2><?php echo $headerText ?> revista</h2>
-            <form action="controller/magazine.controller.php" method="POST">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" name="name" value="<?php echo $formType == 'new' ? '' : $magazine->getName(); ?>">
 
-                <label for="description">Descripción</label>
-                <textarea type="text" class="form-control" name="description"><?php echo $formType == 'new' ? '' : $magazine->getDescription(); ?></textarea>
-
-                <label for="category_id">Tipo de revista</label>
-                <select name="category_id" class="form-control" >
-                    <option value="1" <?php if ($formType == 'edit' && $magazine->getCategoryId() == 1) { echo ' selected="selected"'; } ?>>la plaza</option>
-                    <option value="2" <?php if ($formType == 'edit' && $magazine->getCategoryId() == 2) { echo ' selected="selected"'; } ?>>construir</option>
-                </select>
-
-                <label for="description">Mes de concurrencia</label>
-                <input type="date" name="relevant_month" class="form-control" value="<?php echo $formType == 'new' ? '' : $magazine->getRelevantMonth(); ?>"></input>
-
-                <div class="form-check">
-                    <input name="enabled" class="form-check-input" type="checkbox" id="gridCheck1" value="1" <?php if ($formType == 'edit' && $magazine->getEnabled()) { echo 'checked'; } ?>>
-                    <label class="form-check-label" for="gridCheck1">
-                        Habilitar 
-                    </label>
+    <section class="magazine-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                <div class="header-container">
+                    <h2><?php echo $headerText ?> revista</h2>
+                    <a class="btn btn-primary" href="view-magazines.php">Lista de revistas</a>
                 </div>
-                <input type="hidden" name="action" value="<?php echo ($formType == 'new') ? 'create' : 'edit';  ?>">
-                <input type="hidden" name="id" value="<?php echo ($formType == 'new') ? 'null' : $magazine->getId();  ?>">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+                <form action="controller/magazine.controller.php" method="POST">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" name="name" value="<?php echo $formType == 'new' ? '' : $magazine->getName(); ?>">
+
+                    <label for="description">Descripción</label>
+                    <textarea type="text" class="form-control" name="description"><?php echo $formType == 'new' ? '' : $magazine->getDescription(); ?></textarea>
+
+                    <label for="link">link de YUMPU</label>
+                    <textarea type="text" class="form-control" name="link"><?php echo $formType == 'new' ? '' : $magazine->getLink(); ?></textarea>
+
+                    <label for="category_id">Tipo de revista</label>
+                    <select name="category_id" class="form-control" >
+                        <option value="1" <?php if ($formType == 'edit' && $magazine->getCategoryId() == 1) { echo ' selected="selected"'; } ?>>La Plaza Inmobiliaria</option>
+                        <option value="2" <?php if ($formType == 'edit' && $magazine->getCategoryId() == 2) { echo ' selected="selected"'; } ?>>Construya Hoy</option>
+                    </select>
+
+                    <label for="description">Mes de concurrencia</label>
+                    <input type="date" name="relevant_month" class="form-control" value="<?php echo $formType == 'new' ? '' : $magazine->getRelevantMonth(); ?>"></input>
+
+                    <!--<div class="form-check">
+                        <input name="enabled" class="form-check-input" type="checkbox" id="gridCheck1" value="1" <?php if ($formType == 'edit' && $magazine->getEnabled()) { echo 'checked'; } ?>>
+                        <label class="form-check-label" for="gridCheck1">
+                            Habilitar 
+                        </label>
+                    </div>-->
+                    <input type="hidden" name="action" value="<?php echo ($formType == 'new') ? 'create' : 'edit';  ?>">
+                    <input type="hidden" name="id" value="<?php echo ($formType == 'new') ? 'null' : $magazine->getId();  ?>">
+                    <button type="submit" class="btn btn-primary send"><?php echo $formType == 'new' ? 'Crear' : 'Editar';?></button>
+                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </body>
 </html>

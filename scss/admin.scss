@@ -4,3 +4,41 @@ section.admin-login {
     align-items: center;
     height: 100vh;
 }
+
+section.view-magazine {
+    padding: 40px 80px;
+
+    table {
+        margin-top: 20px;
+        background-color: $bg-secondary;
+        color: white;
+
+        th {
+            background-color: $color-primary;
+        }
+
+        ul {
+            display: flex;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            li {
+                margin-right: 15px;
+                display: flex;
+                text-decoration: none;
+
+                .action {
+                    color: $text-primary;
+                }
+            }
+        }
+    }
+}
+
+section.magazine-form {
+    padding: 40px 80px;
+
+    .send {
+        margin-top: 15px;
+    }
+}

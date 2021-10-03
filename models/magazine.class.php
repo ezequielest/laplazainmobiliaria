@@ -36,7 +36,7 @@ class Magazine {
     }
 
     public function setLink($link) {
-        $this->link = intval($link);
+        $this->link = $link;
     }
 
     public function getLink() {

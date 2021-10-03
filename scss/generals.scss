@@ -4,7 +4,7 @@ body {
 }
 
 form {
-    max-width: 400px;
+    width: 400px;
 
     label {
         color: $text-primary;
@@ -19,4 +19,11 @@ footer {
     color: #ddd;
     font-size: 10px;
     text-align: center;
+}
+
+section {
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+    }
 }

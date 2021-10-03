@@ -26,13 +26,15 @@ switch ($currentAction) {
         $magazine = new Magazine();
         $magazine->setName($_POST['name']);
         $magazine->setDescription($_POST['description']);
+        $magazine->setLink($_POST['link']);
         $magazine->setCategoryId($_POST['category_id']);
         $magazine->setRelevantMonth($_POST['relevant_month']);
-        //$magazine->setEnabled($_POST['enabled']);
+        $magazine->setEnabled($_POST['enabled']);
 
         $magazineCrud = new MagazineCrud();
         $magazineCrud->save($magazine);
-        header('Location: /laplazainmobiliaria');
+
+        header('Location: /laplazainmobiliaria/admin/view-magazines.php');
         break;
     case 'edit':
 
@@ -40,12 +42,14 @@ switch ($currentAction) {
         $magazine = $magazineCrud->getById($_POST['id']);
         $magazine->setName($_POST['name']);
         $magazine->setDescription($_POST['description']);
+        $magazine->setLink($_POST['link']);
         $magazine->setCategoryId($_POST['category_id']);
         $magazine->setRelevantMonth($_POST['relevant_month']);
-       // $magazine->setEnabled($_POST['enabled']);
+       $magazine->setEnabled($_POST['enabled']);
 
         $magazineCrud->update($magazine);
-        //header('Location: /laplazainmobiliaria/admin/view-magazines.php');
+        
+        header('Location: /laplazainmobiliaria/admin/view-magazines.php');
         break;
     case 'delete':
         echo 'deleting';

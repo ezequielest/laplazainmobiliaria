@@ -4,7 +4,7 @@ body {
 }
 
 form {
-  max-width: 400px;
+  width: 400px;
 }
 form label {
   color: #fff;
@@ -19,11 +19,49 @@ footer {
   text-align: center;
 }
 
+section .header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 section.admin-login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+section.view-magazine {
+  padding: 40px 80px;
+}
+section.view-magazine table {
+  margin-top: 20px;
+  background-color: #232323;
+  color: white;
+}
+section.view-magazine table th {
+  background-color: #00705c;
+}
+section.view-magazine table ul {
+  display: flex;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+section.view-magazine table ul li {
+  margin-right: 15px;
+  display: flex;
+  text-decoration: none;
+}
+section.view-magazine table ul li .action {
+  color: #fff;
+}
+
+section.magazine-form {
+  padding: 40px 80px;
+}
+section.magazine-form .send {
+  margin-top: 15px;
 }
 
 section {
