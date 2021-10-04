@@ -52,7 +52,7 @@
                         <ul>
                             <li><a class="action" href="./magazine-form.php?action=edit&id=<?php echo $magazine['id'] ?>"><i class="fas fa-edit"></i></a></li>
                             <!--<li><a id="<?php echo $magazine['id'] ?>" class="action delete"><i class="fas fa-trash-alt"></i></a></li>-->
-                            <li><a class="action" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></li>
+                            <li><a id="<?php echo $magazine['id'] ?>" class="action checkDelete" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></li>
                         </ul>    
                     </td>
                 </tr>
@@ -76,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</a>
-                <a id="<?php echo $magazine['id'] ?>" class="action delete btn btn-primary">SI</a>
+                <a class="action delete btn btn-primary">SI</a>
             </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
         crossorigin="anonymous"></script>
     <script>
     $('.delete').click(function() {
-        let id = $(this).attr('id');
+        let id = $('.checkDelete').attr('id');
 
         $.ajax({
             url: `./controller/magazine.controller.php?action=delete&id=${id}`,
