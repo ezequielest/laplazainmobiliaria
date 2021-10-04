@@ -48,12 +48,13 @@ switch ($currentAction) {
        $magazine->setEnabled($_POST['enabled']);
 
         $magazineCrud->update($magazine);
-        
+
         header('Location: /laplazainmobiliaria/admin/view-magazines.php');
         break;
     case 'delete':
-        echo 'deleting';
-        echo $_GET['id'];
+        $magazineCrud = new MagazineCrud();
+        $magazineCrud->deleteById($_GET['id']);
+        header('Location: /laplazainmobiliaria/admin/view-magazines.php');
         break;
     default:
         header('Location: /laplazainmobiliaria/admin/view-magazines.php');

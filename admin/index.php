@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if (isset($_SESSION['user_name'])) {
+    header('location: /laplazainmobiliaria/admin/view-magazines.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

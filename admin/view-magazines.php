@@ -10,7 +10,6 @@
     $magazineList = $magazineCrud->getAll();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +47,8 @@
                     <td> 
                         <ul>
                             <li><a class="action" href="./magazine-form.php?action=edit&id=<?php echo $magazine['id'] ?>"><i class="fas fa-edit"></i></a></li>
-                            <li><a class="action" href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>"><i class="fas fa-trash-alt"></i></li>
+                            <li><a class="action" href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>"><i class="fas fa-trash-alt"></i></a></li>
+                            <!--<li><a class="action" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></li>-->
                         </ul>    
                     </td>
                 </tr>
@@ -59,6 +59,27 @@
             </div>
         </div>
     </section>
+
+    <div class="modal" tabindex="-1" id="deleteModal" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminando revista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Esta seguro de que quiere eliminar esta revista?</p>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</a>
+                <a class="action btn btn-primary" href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>">SI</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <footer>La plaza inmobiliaria | Construya hoy | Todos los derechos resevados ©</footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 </body>
 </html>

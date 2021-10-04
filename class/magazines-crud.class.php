@@ -84,6 +84,12 @@ class MagazineCrud {
         $query->execute();
     }
 
+    public function deleteById($id) {
+        $query = $this->conn->connection->prepare('DELETE FROM magazines WHERE id = :id');
+        $query->bindValue(':id', $id);
+        $query->execute();
+    }
+
     private function fillMagazine($rows) {
         $magazineList = [];
         $magazineObj = new Magazine();

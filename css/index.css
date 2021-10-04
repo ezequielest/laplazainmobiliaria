@@ -28,6 +28,10 @@ section .header-container {
   color: yellow;
 }
 
+.modal .modal-content {
+  background-color: #333 !important;
+}
+
 section.admin-login {
   display: flex;
   justify-content: center;
