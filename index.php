@@ -1,13 +1,12 @@
 
 <?php 
+    define('ROOTPATH', dirname(__FILE__));
+    include_once('./class/magazines-crud.class.php');
 
-define('ROOTPATH', dirname(__FILE__));
-    //include_once('./class/db.class.php');
-    
-    //include_once('./class/magazines.class.php');
-    
-    //$magazine = new Magazine();
-    //$magazines = $magazine->getById(1);
+    $magazineCrud = new MagazineCrud();
+
+    $magazineLaPlaza = $magazineCrud->getCurrentMagazine(1);
+    $magazineConstruya = $magazineCrud->getCurrentMagazine(2);
 ?>
 
 
@@ -37,18 +36,30 @@ define('ROOTPATH', dirname(__FILE__));
             </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">CONSTRUYA HOY</button>
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">LA PLAZA INMOBILIARIA</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">LA PLAZA INMOBILIARIA</button>
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">CONSTRUYA HOY</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <iframe id="yumpuLaPlaza" class="yumpu-container" src="https://www.yumpu.com/es/embed/view/9B0ksp76l5ErG8o4" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                    <?php if ($magazineLaPlaza == null) {
+                        ?> NO HAY REVISTA <?php
+                    } else {
+                        ?>
+                        <iframe id="yumpuLaPlaza" class="yumpu-container" src="<?php echo $magazineLaPlaza->getLink() ?>" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                        <?php
+                    } ?>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">      
-                    <iframe id="yumpuConstruya" class="yumpu-container" src="https://www.yumpu.com/es/embed/view/bpNP71Chu4e9wy0i" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">   
+                    <?php if ($magazineConstruya == null) {
+                        ?> NO HAY REVISTA <?php
+                    } else {
+                        ?>
+                        <iframe id="yumpuLaPlaza" class="yumpu-container" src="<?php echo $magazineConstruya->getLink() ?>" frameborder="0" allowfullscreen="true"  allowtransparency="true"></iframe>
+                        <?php
+                    } ?>   
                 </div>
             </div>
 

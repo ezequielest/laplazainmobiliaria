@@ -107,6 +107,44 @@ class MagazineCrud {
         }
         return $magazineList;
     }
+
+    public function getCurrentMagazine($categoryId) {
+        $currentMonth = date('m');
+        $currentYear= date('Y');
+        $cantOfDaysInMonth = date('t');
+
+        $query = $this->conn->connection->query("
+            SELECT * FROM magazines WHERE category_id = ' . $categoryId . ' 
+            AND enabled =  1 
+            AND relevant_month >= '$currentYear-$currentMonth-1' 
+            AND relevant_month <= '$currentYear-$currentMonth-$cantOfDaysInMonth'
+            LIMIT 1"
+        );
+
+        $row = $query->fetch();
+
+        if ($row == null) {
+            $query = $this->conn->connection->query("SELECT * FROM magazines WHERE category_id = $categoryId AND enabled = 1 LIMIT 1");
+            $row = $query->fetch();
+        }
+
+        if ($row) {
+            $magazineObj = new Magazine();
+
+            $magazineObj->setId($row['id']);
+            $magazineObj->setName($row['name']);
+            $magazineObj->setDescription($row['description']);
+            $magazineObj->setLink($row['link']);
+            $magazineObj->setCategoryId($row['category_id']);
+            $magazineObj->setEnabled($row['enabled']);
+            $magazineObj->setRelevantMonth($row['relevant_month']);
+            $magazineObj->setCreationDate(date('Y-m-d'));
+    
+            return $magazineObj;
+        }
+
+        
+    }
 }
 
 ?>

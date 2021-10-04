@@ -30,7 +30,10 @@
                 <div class="col-12">
                 <div class="header-container">
                     <h2>Lista de revistas</h2>
-                    <a class="btn btn-primary" href="magazine-form.php?action=new">Nueva revista</a>
+                    <div>
+                        <a class="btn btn-primary" href="magazine-form.php?action=new">Nueva revista</a>
+                        <a class="btn btn-danger" href="login.php?close=close">Cerrar sesión</a>
+                    </div>
                 </div>
                 <table class="table">
                 <tr>
@@ -40,15 +43,15 @@
                     <th style="width: 15%">Acciones</th>
                 </tr>
                 <?php foreach ($magazineList as $magazine) { ?>
-                <tr>
+                <tr id="row<?php echo $magazine['id'] ?>">
                     <td> <?php echo $magazine['name'] ?> </td>
                     <td> <?php echo $magazine['description'] ?> </td>
                     <td> <?php echo ($magazine['category_id'] == 1) ? 'La Plaza Inmobiliaria' : 'Construya Hoy'; ?> </td>
                     <td> 
                         <ul>
                             <li><a class="action" href="./magazine-form.php?action=edit&id=<?php echo $magazine['id'] ?>"><i class="fas fa-edit"></i></a></li>
-                            <li><a class="action" href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>"><i class="fas fa-trash-alt"></i></a></li>
-                            <!--<li><a class="action" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></li>-->
+                            <!--<li><a id="<?php echo $magazine['id'] ?>" class="action delete"><i class="fas fa-trash-alt"></i></a></li>-->
+                            <li><a class="action" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></li>
                         </ul>    
                     </td>
                 </tr>
@@ -72,7 +75,7 @@
             </div>
             <div class="modal-footer">
                 <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</a>
-                <a class="action btn btn-primary" href="./controller/magazine.controller.php?action=delete&id=<?php echo $magazine['id'] ?>">SI</a>
+                <a id="<?php echo $magazine['id'] ?>" class="action delete btn btn-primary">SI</a>
             </div>
             </div>
         </div>
@@ -81,5 +84,29 @@
     <footer>La plaza inmobiliaria | Construya hoy | Todos los derechos resevados ©</footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script>
+    $('.delete').click(function() {
+        let id = $(this).attr('id');
+
+        $.ajax({
+            url: `./controller/magazine.controller.php?action=delete&id=${id}`,
+            type: 'GET',
+            //data: {id: id},
+            error: function() {
+                $('#deleteModal').modal('hide')
+                alert('Error de servidor, vuelva a intentarlo');
+            },
+            success: function(data) {
+                $('#deleteModal').modal('hide')
+                $("#row"+id).remove();
+            }
+        });
+
+    });
+    </script>
 </body>
 </html>

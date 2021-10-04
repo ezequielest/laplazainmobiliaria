@@ -31,6 +31,12 @@ section .header-container {
 .modal .modal-content {
   background-color: #333 !important;
 }
+.modal .modal-content .modal-footer {
+  border-top: 0 !important;
+}
+.modal .modal-content .modal-header {
+  border-bottom: 0 !important;
+}
 
 section.admin-login {
   display: flex;
