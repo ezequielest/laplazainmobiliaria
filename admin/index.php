@@ -22,7 +22,8 @@ if (isset($_SESSION['user_name'])) {
 <body>
     <section class="admin-login">
         <form action="login.php" method="POST">
-            Administración
+            <img style="display: flex; margin: 0 auto;" src="../img/laplaza50.png" />
+            <h2 style="text-align: center; margin:20px 0">Administración</h2>
             <input name="user" type="text" class="form-control" placeholder="Usuario">
             <input name="password" type="password"  class="form-control" placeholder="Contraseña">
             <button class="btn btn-primary">Ingresar</button>
