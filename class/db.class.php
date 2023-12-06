@@ -1,12 +1,6 @@
 
 <?php
 class DbConnection {
-    /*private $servername = "mysql.laplazainmobiliaria.com";
-    *private $username = "dblaplaza";
-    *private $password = "4739Eerr";
-    *private $dbName = "laplazainmobiliaria";
-    */
-    
     private $servername = "localhost";
     private $username = "root";
     private $password = "root";
